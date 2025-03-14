@@ -26,7 +26,7 @@ def export_data(user=Depends(get_current_user)):
         headers={"Content-Disposition": f"attachment; filename=data_export.csv"}
     )
 
-@router.post("/example")
-async def receive_water_quality(data: WaterQualityData):
-    print(f"Received water quality data - pH: {data.pH}, TDS: {data.TDS}, ORP: {data.ORP}")
+@router.get("/example")
+async def receive_water_quality(pH: float, TDS: float, ORP: float):
+    print(f"Received water quality data - pH: {pH}, TDS: {TDS}, ORP: {ORP}")
     return {"message": "Data received successfully"}
